@@ -370,7 +370,24 @@ SUBTITLE = (
 CSS = """
 :root { --df-ink:#182a34; --df-muted:#54666e; --df-paper:#f3f6f5; --df-line:#d6e0df; --df-accent:#176b69; }
 body,.gradio-container { background:var(--df-paper)!important; color:var(--df-ink)!important; }
-.gradio-container { max-width:1180px!important; }
+.gradio-container {
+    width:100%!important;
+    max-width:1180px!important;
+    margin:0 auto!important;
+    box-sizing:border-box!important;
+}
+#df-main-row {
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px!important;
+    align-items:start;
+    width:100%;
+}
+#df-main-row > .column {
+    width:auto!important;
+    min-width:0!important;
+    flex:none!important;
+}
 #df-hero { padding:1.4rem 0 .65rem; }
 #df-hero h1 { color:var(--df-ink); font-size:clamp(2rem,4vw,3rem); letter-spacing:-.035em; margin-bottom:.35rem; }
 #df-hero p { color:var(--df-muted); max-width:760px; line-height:1.55; }
@@ -379,13 +396,16 @@ body,.gradio-container { background:var(--df-paper)!important; color:var(--df-in
 .panel { border:1px solid var(--df-line)!important; border-radius:10px!important; background:#fff!important; }
 button.primary { background:var(--df-accent)!important; border-color:var(--df-accent)!important; }
 button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid #70aaa6!important; outline-offset:2px!important; }
-@media(max-width:700px) { #df-hero { padding-top:.6rem; } }
+@media(max-width:700px) {
+    #df-main-row { grid-template-columns:minmax(0,1fr); }
+    #df-hero { padding-top:.6rem; }
+}
 """
 
 with gr.Blocks(title="Skin lesion classification: research demo", css=CSS) as demo:
     gr.Markdown("# Skin lesion classification: research demo\n\n" + SUBTITLE, elem_id="df-hero")
     gr.Markdown(WARNING, elem_id="df-warning")
-    with gr.Row(equal_height=False):
+    with gr.Row(equal_height=False, elem_id="df-main-row"):
         with gr.Column(scale=1, elem_classes=["panel"]):
             image_input = gr.Image(type="numpy", image_mode="RGB", label="Dermoscopic image", sources=["upload"])
             with gr.Row():

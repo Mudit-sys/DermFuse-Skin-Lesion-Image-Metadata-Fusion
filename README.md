@@ -7,6 +7,16 @@ The project compares an EfficientNet-B0 convolutional neural network with a
 DeiT-Small Vision Transformer. Patient age, sex, and body-site metadata can be
 concatenated with image features through a fusion network.
 
+## Application preview
+
+![DermFuse application screenshot](assets/demo_screenshot.png)
+
+### Example inference result
+
+![DermFuse example prediction and heatmap](assets/demo_prediction_screenshot.png)
+
+Example model output for demonstration only; it is not medical advice.
+
 > **Research disclaimer:** This project is not a medical device and must not
 > be used for diagnosis or treatment decisions. HAM10000 contains dermoscopic
 > images, while phone photographs are outside the demonstrated domain.
