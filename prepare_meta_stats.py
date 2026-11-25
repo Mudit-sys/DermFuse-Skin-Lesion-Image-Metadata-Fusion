@@ -16,7 +16,7 @@ def main() -> None:
     parser.add_argument("--data-dir", required=True, type=Path, help="Folder containing HAM10000_metadata.csv")
     parser.add_argument(
         "--split", type=Path,
-        default=ROOT.parent / "dermfuse_merged" / "dermfuse_out" / "split.csv",
+        default=ROOT / "dermfuse_out" / "split.csv",
     )
     parser.add_argument("--output", type=Path, default=Path(__file__).resolve().parent / "meta_stats.json")
     args = parser.parse_args()

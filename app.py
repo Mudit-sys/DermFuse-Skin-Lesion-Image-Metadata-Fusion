@@ -21,10 +21,10 @@ from torchvision import transforms as T
 ROOT = Path(__file__).resolve().parent
 WEIGHTS_DIR = ROOT / "weights"
 STATS_PATH = ROOT / "meta_stats.json"
-SPLIT_PATH = ROOT / "dermfuse_merged" / "dermfuse_out" / "split.csv"
+SPLIT_PATH = ROOT / "dermfuse_out" / "split.csv"
 if not SPLIT_PATH.exists():
-    SPLIT_PATH = ROOT.parent / "dermfuse_merged" / "dermfuse_out" / "split.csv"
-DEFAULT_DATA_DIR = Path(os.environ.get("HAM10000_DIR", ROOT.parent / "ham_subset")).expanduser()
+    SPLIT_PATH = ROOT.parent / "dermfuse_out" / "split.csv"
+DEFAULT_DATA_DIR = Path(os.environ.get("HAM10000_DIR", ROOT / "ham_subset")).expanduser()
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 IMAGE_SIZE = 224
 CLASSES = ["akiec", "bcc", "bkl", "df", "mel", "nv", "vasc"]

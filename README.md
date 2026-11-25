@@ -35,15 +35,15 @@ This project uses the HAM10000 dataset:
 - Seven diagnostic classes
 - Metadata: age, sex, body site, lesion identifier, and diagnosis
 
-| Code | Diagnostic class |
-|---|---|
+| Code  | Diagnostic class                              |
+| ----- | --------------------------------------------- |
 | akiec | Actinic keratoses / intraepithelial carcinoma |
-| bcc | Basal cell carcinoma |
-| bkl | Benign keratosis-like lesion |
-| df | Dermatofibroma |
-| mel | Melanoma |
-| nv | Melanocytic nevus |
-| vasc | Vascular lesion |
+| bcc   | Basal cell carcinoma                          |
+| bkl   | Benign keratosis-like lesion                  |
+| df    | Dermatofibroma                                |
+| mel   | Melanoma                                      |
+| nv    | Melanocytic nevus                             |
+| vasc  | Vascular lesion                               |
 
 The split is grouped by `lesion_id` to reduce leakage from multiple images of
 the same lesion. HAM10000 does not provide patient identifiers, so lesions from
@@ -55,14 +55,14 @@ dataset terms and attribution requirements before redistribution.
 
 ## Project files
 
-| File | Purpose |
-|---|---|
-| `app.py` | Local Gradio inference interface |
-| `prepare_meta_stats.py` | Builds metadata normalization statistics from the training split |
+| File                     | Purpose                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| `app.py`                 | Local Gradio inference interface                                               |
+| `prepare_meta_stats.py`  | Builds metadata normalization statistics from the training split               |
 | `DermFuse(kaggle).ipynb` | Kaggle training, evaluation, imbalance, bootstrap, and explainability notebook |
-| `requirements.txt` | Python dependencies for the demo |
-| `README.md` | Project setup and documentation |
-| `.gitignore` | Excludes environments, datasets, logs, metadata statistics, and model weights |
+| `requirements.txt`       | Python dependencies for the demo                                               |
+| `README.md`              | Project setup and documentation                                                |
+| `.gitignore`             | Excludes environments, datasets, logs, metadata statistics, and model weights  |
 
 The notebook is a cleaned, reproducible copy. Model checkpoints and local
 datasets are intentionally excluded from Git.
@@ -122,13 +122,13 @@ replace the power-0.5 baseline.
 
 Mean results across seeds 1, 2, and 42:
 
-| Configuration | Test macro-F1 | Test accuracy | Test AUC | Melanoma sensitivity |
-|---|---:|---:|---:|---:|
-| EfficientNet-B0, image-only | 0.664 | 0.808 | 0.949 | 0.544 |
-| EfficientNet-B0, fused | 0.647 | 0.815 | 0.953 | 0.539 |
-| DeiT-Small, image-only | 0.683 | 0.823 | 0.954 | 0.520 |
-| DeiT-Small, fused | 0.677 | 0.825 | 0.955 | 0.548 |
-| Metadata-only MLP | 0.249 | 0.658 | 0.759 | 0.284 |
+| Configuration               | Test macro-F1 | Test accuracy | Test AUC | Melanoma sensitivity |
+| --------------------------- | ------------: | ------------: | -------: | -------------------: |
+| EfficientNet-B0, image-only |         0.664 |         0.808 |    0.949 |                0.544 |
+| EfficientNet-B0, fused      |         0.647 |         0.815 |    0.953 |                0.539 |
+| DeiT-Small, image-only      |         0.683 |         0.823 |    0.954 |                0.520 |
+| DeiT-Small, fused           |         0.677 |         0.825 |    0.955 |                0.548 |
+| Metadata-only MLP           |         0.249 |         0.658 |    0.759 |                0.284 |
 
 These are descriptive results from three training seeds on one fixed test split.
 The differences are not presented as proof of a statistically reliable backbone
@@ -168,7 +168,6 @@ does not establish causation and should not be interpreted as a diagnosis.
 ### 1. Create a virtual environment
 
 ```powershell
-cd dermfuse
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
@@ -177,14 +176,15 @@ python -m pip install -r requirements.txt
 ### 2. Prepare metadata statistics
 
 Place HAM10000 in a local directory containing `HAM10000_metadata.csv` and its
-JPEG images, or use the default `../ham_subset` location.
+JPEG images, or use the default `ham_subset` folder at the repository root.
 
 ```powershell
 $env:HAM10000_DIR = "D:\datasets\HAM10000"
 python prepare_meta_stats.py --data-dir "$env:HAM10000_DIR"
 ```
 
-This writes `meta_stats.json` locally. The file is excluded from Git.
+The default saved split is `dermfuse_out/split.csv`. This writes
+`meta_stats.json` locally; that generated file is excluded from Git.
 
 ### 3. Add model checkpoints
 
@@ -212,7 +212,7 @@ to bind only to `127.0.0.1` and does not create a public share link.
 
 ## Run the Kaggle notebook
 
-Upload [`DermFuse(kaggle).ipynb`](DermFuse(kaggle).ipynb) to Kaggle or import it
+Upload [`DermFuse(kaggle).ipynb`](<DermFuse(kaggle).ipynb>) to Kaggle or import it
 into a Kaggle-compatible notebook environment.
 
 Recommended settings:
