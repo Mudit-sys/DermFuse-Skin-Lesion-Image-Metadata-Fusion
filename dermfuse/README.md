@@ -245,10 +245,3 @@ completed configurations.
 
 Grad-CAM and attention rollout show where a model focuses; they do not prove
 why a lesion is malignant or benign.
-
-## Academic context
-
-This project is an academic skin-lesion classification mini project for
-CSET343 AI in Healthcare at Bennett University. The student-facing report
-title and enrollment details should be confirmed before publication or academic
-submission.
