@@ -1,0 +1,54 @@
+# Local Python environment
+.venv/
+venv/
+env/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and local secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Generated model artifacts
+weights/
+*.pt
+*.pth
+*.ckpt
+
+# Local datasets and examples
+examples/
+data/
+datasets/
+ham_subset/
+*.zip
+*.tar
+*.tar.gz
+*.npy
+*.npz
+
+# Generated metadata
+meta_stats.json
+
+# Logs and temporary files
+*.log
+logs/
+flagged/
+tmp/
+temp/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

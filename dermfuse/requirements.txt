@@ -1,0 +1,8 @@
+gradio>=4.44
+torch
+torchvision
+timm
+numpy
+pandas
+pillow
+opencv-python-headless
